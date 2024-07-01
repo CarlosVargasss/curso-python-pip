@@ -37,7 +37,7 @@ def run_game():
     ronda = 0
 
     while score_user < puntaje and score_computer < puntaje:
-        # contador ronda
+        # contador rondad
         ronda += 1 
         print('*' * 10 + "\n RONDA #" + str(ronda) + "\n" + '*' * 10)
 
