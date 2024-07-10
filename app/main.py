@@ -1,15 +1,18 @@
 import read_csv as rc
 import utils 
 import charts
+import pandas as pd
 
 
 def run():
     # Obtención de los datos
-    data = rc.read_csv('py-project/app/data.csv')
+    df = pd.read_csv('data.csv') 
 
     # Gráfico bar de población según país.
+
     country = input('Type Country => ').title().strip()
-    filter = utils.population_by_country(data, country)
+    filter = df[df['Country/Territory'] == country]
+    
     cou_anos, cou_population = utils.get_population(filter)
     charts.generate_bar_chart(cou_anos, cou_population, country)
 
@@ -17,10 +20,10 @@ def run():
     filtrar = input('¿Desea filtrar por continente? Si o no -> ').lower()
     if filtrar == 'si':
         continent = input('Escribir el continente -> ').title().strip()
-        data = utils.country_by_continent(data, continent)
-    country = list(map(lambda x : x['Country/Territory'], data))
-    percentage = list(map(lambda x : x['World Population Percentage'], data))   
-    charts.generate_pie_chart(country, percentage)
+        df = df[df['Continent'] == continent]
+    countries = df['Country/Territory'].values
+    percentages = df['World Population Percentage']   
+    charts.generate_pie_chart(countries, percentages)
 
 
 if __name__ == '__main__':

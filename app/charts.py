@@ -8,7 +8,7 @@ def generate_bar_chart(labels, values, country):
     ax.set_xlabel('label')
     ax.set_ylabel('value')
     
-    plt.savefig(f'py-project/app/imgs/{country}.png')
+    plt.savefig(f'imgs/{country}.png')
     plt.close()
 
 def generate_pie_chart(labels,values):
@@ -16,7 +16,7 @@ def generate_pie_chart(labels,values):
     ax.pie(values, labels=labels)
     ax.axis('equal')
 
-    plt.savefig('py-project/app/imgs/pie.png')
+    plt.savefig('imgs/pie.png')
     plt.close()
 
 
